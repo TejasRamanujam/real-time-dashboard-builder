@@ -1,0 +1,97 @@
+.app { min-height: 100vh; display: flex; flex-direction: column; }
+.header {
+  background: var(--surface); border-bottom: 1px solid var(--border);
+  padding: 1.25rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;
+}
+.header h1 { font-size: 1.5rem; font-weight: 700; background: linear-gradient(135deg, var(--accent), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.header h2 { font-size: 1.25rem; font-weight: 600; }
+.subtitle { color: var(--text-muted); font-size: 0.85rem; }
+.main { flex: 1; padding: 1.5rem; max-width: 1300px; margin: 0 auto; width: 100%; }
+.row { display: flex; align-items: center; }
+.gap { gap: 0.5rem; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.5rem 1rem; background: var(--accent); border: 1px solid var(--accent);
+  border-radius: var(--radius); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s;
+}
+.btn-primary:hover { filter: brightness(1.15); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0.5rem 0.75rem; background: transparent; border: 1px solid var(--border);
+  border-radius: var(--radius); color: var(--text-muted); font-size: 0.85rem; cursor: pointer; transition: all 0.15s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--text); }
+.icon-btn {
+  background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.2rem;
+  display: flex; align-items: center; border-radius: 4px;
+}
+.icon-btn:hover { background: var(--surface-hover); color: var(--text); }
+.input {
+  width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg); color: var(--text); font-size: 0.9rem; outline: none; display: block; margin-bottom: 0.5rem;
+}
+.input:focus { border-color: var(--accent); }
+.textarea { resize: vertical; font-family: monospace; font-size: 0.82rem; }
+.text-muted { color: var(--text-muted); }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.dash-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.25rem; cursor: pointer; transition: all 0.2s;
+}
+.dash-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.dash-card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+
+.form-group { margin-bottom: 0.75rem; }
+.form-group label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 0.25rem; }
+
+.grid-canvas { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; min-height: 400px; }
+.widget-box {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+  display: flex; flex-direction: column; overflow: hidden; height: 100%;
+}
+.widget-header {
+  display: flex; align-items: center; gap: 0.25rem; padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border); background: var(--surface-hover);
+}
+.widget-drag-handle { cursor: grab; color: var(--text-muted); display: flex; }
+.widget-drag-handle:active { cursor: grabbing; }
+.widget-title { font-size: 0.8rem; font-weight: 500; flex: 1; }
+.widget-actions { display: flex; gap: 0.15rem; }
+.widget-body { flex: 1; overflow: hidden; }
+.widget-empty {
+  display: flex; align-items: center; justify-content: center; height: 100%;
+  color: var(--text-muted); font-size: 0.8rem; padding: 1rem; text-align: center;
+}
+.widget-table { overflow: auto; max-height: 100%; }
+.widget-table table { width: 100%; border-collapse: collapse; font-size: 0.7rem; }
+.widget-table th {
+  position: sticky; top: 0; background: var(--surface); padding: 0.2rem 0.4rem;
+  text-align: left; font-weight: 600; color: var(--text-muted); border-bottom: 1px solid var(--border);
+}
+.widget-table td { padding: 0.15rem 0.4rem; border-bottom: 1px solid rgba(42,46,62,0.5); }
+
+.stat-card { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+.stat-value { font-size: 1.75rem; font-weight: 700; color: var(--accent-light); }
+.stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.stat-sub { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; }
+
+.widget-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; }
+.widget-option {
+  background: var(--surface-hover); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.75rem; display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+  cursor: pointer; transition: all 0.15s; font-size: 0.75rem;
+}
+.widget-option:hover { border-color: var(--accent); }
+
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: flex-start; padding: 2rem 1rem; z-index: 100; overflow-y: auto; }
+.modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 800px; width: 100%; padding: 2rem; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-sm { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; max-width: 420px; width: 100%; padding: 1.5rem; position: relative; }
+.modal h3, .modal-sm h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--accent-light); }
+.modal-close { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+.modal-close:hover { background: var(--surface-hover); color: var(--text); }
+.test-result { margin-top: 0.75rem; font-size: 0.82rem; background: var(--bg); padding: 0.75rem; border-radius: var(--radius); }
+
+.dashboard-header { padding: 0.75rem 1.5rem; }
