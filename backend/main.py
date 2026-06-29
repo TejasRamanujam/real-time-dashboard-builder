@@ -128,6 +128,8 @@ def list_dashboards(db: Session = Depends(get_db)):
 
 @app.post("/api/dashboards", response_model=DashboardResponse)
 def create_dashboard(data: DashboardBase, db: Session = Depends(get_db)):
+    if db.query(Dashboard).filter(Dashboard.name == data.name).first():
+        raise HTTPException(status_code=409, detail="A dashboard with this name already exists")
     d = Dashboard(**data.model_dump())
     db.add(d)
     db.commit()
