@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends, HTTPException, WebSocket, WebSocketDisconn
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import Optional, List
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 from database import init_db, get_db
 from models import Dashboard, Widget, DataSource, DashboardShare
@@ -47,6 +47,11 @@ class DashboardResponse(DashboardBase):
     created_at: str = ""
     updated_at: str = ""
     model_config = {"from_attributes": True}
+
+    @field_validator("created_at", "updated_at", mode="before")
+    @classmethod
+    def _stringify_dt(cls, v):
+        return v.isoformat() if hasattr(v, "isoformat") else (v or "")
 
 
 class WidgetBase(BaseModel):

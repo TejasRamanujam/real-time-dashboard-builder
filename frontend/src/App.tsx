@@ -93,18 +93,11 @@ function DashboardView({ dashId }: { dashId: number }) {
     api.fetchDataSources().then(setDataSources)
   }, [dashId])
 
+  // Live streaming updates require a persistent websocket server (not available
+  // on serverless). Widget data is loaded over REST below; the live socket is
+  // disabled to avoid a failing connection.
   useEffect(() => {
-    const ws = new WebSocket(`ws://localhost:8000/ws/dashboard/${dashId}`)
-    wsRef.current = ws
-    ws.onopen = () => console.log('WS connected')
-    ws.onmessage = (e) => {
-      const msg = JSON.parse(e.data)
-      if (msg.type === 'widget_data' && msg.widget_id) {
-        setWidgetData(prev => ({ ...prev, [msg.widget_id]: msg.data }))
-      }
-    }
-    ws.onclose = () => { setTimeout(() => { /* reconnect */ }, 3000) }
-    return () => ws.close()
+    wsRef.current = null
   }, [dashId])
 
   useEffect(() => {
